@@ -13,6 +13,7 @@ import pandas as pd
 import streamlit as st
 from openpyxl.styles import Alignment, Font, PatternFill
 
+import config
 from scraper import GoogleMapsScraper
 
 
