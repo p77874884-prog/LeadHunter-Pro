@@ -30,8 +30,8 @@ MAX_SCROLL_ATTEMPTS = 40
 
 # headless=False mostra o navegador na tela — útil durante desenvolvimento
 # para ver o que está acontecendo e ajustar seletores quebrados.
-# headless=True é mais rápido mas estatisticamente mais fácil de detectar.
-HEADLESS = False
+# headless=True é mais seguro para servidores sem interface gráfica.
+HEADLESS = os.environ.get("HEADLESS", "true").strip().lower() in ("1", "true", "yes")
 
 # Caminho para o arquivo JSON da conta de serviço do Google Sheets.
 # Defina a variável de ambiente GOOGLE_SHEETS_SERVICE_ACCOUNT_FILE

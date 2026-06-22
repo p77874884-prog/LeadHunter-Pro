@@ -142,7 +142,7 @@ with st.form("search_form"):
 
     headless_mode = st.checkbox(
         "Rodar em segundo plano (headless)",
-        value=False,
+        value=config.HEADLESS,
         help="Ative para executar sem exibir a janela do navegador do scraper.",
     )
 
