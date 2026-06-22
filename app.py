@@ -11,7 +11,12 @@ from typing import Optional
 
 import pandas as pd
 import streamlit as st
-from openpyxl.styles import Alignment, Font, PatternFill
+
+try:
+    from openpyxl.styles import Alignment, Font, PatternFill
+    OPENPYXL_AVAILABLE = True
+except ImportError:
+    OPENPYXL_AVAILABLE = False
 
 import config
 from scraper import GoogleMapsScraper
@@ -190,7 +195,7 @@ if not st.session_state.leads_df.empty:
         use_container_width=True,
     )
 
-    try:
+    if OPENPYXL_AVAILABLE:
         excel_data = generate_excel_bytes(st.session_state.leads_df)
         st.download_button(
             "⬇️ Compartilhar / Baixar Planilha Top (Excel)",
@@ -199,7 +204,7 @@ if not st.session_state.leads_df.empty:
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             use_container_width=True,
         )
-    except ModuleNotFoundError:
+    else:
         st.warning(
             "O módulo openpyxl não está instalado. Instale-o com `pip install openpyxl` para baixar o arquivo Excel.",
         )
