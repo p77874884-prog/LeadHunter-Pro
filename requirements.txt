@@ -1,0 +1,9 @@
+streamlit
+playwright
+reportlab
+pandas
+gspread
+google-auth
+selenium
+webdriver-manager
+openpyxl

@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: leadhunter-pro
+    env: python
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt && playwright install chromium
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.enableCORS false --server.headless true
